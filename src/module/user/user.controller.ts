@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Get,
+  Post,
+  UseInterceptors,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUser } from './dto/createUser.dto';
 
@@ -11,6 +18,7 @@ export class UserController {
     return await this.userService.createUser(userData);
   }
 
+  @UseInterceptors(ClassSerializerInterceptor)
   @Get()
   async getAllUser() {
     return await this.userService.getAllUser();

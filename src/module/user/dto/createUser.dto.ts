@@ -8,7 +8,7 @@ export class CreateUser {
   @IsEmail()
   email: string;
 
-  @Exclude()
   @IsNotEmpty()
+  // @Exclude()
   password: string;
 }
